@@ -6,7 +6,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(BASE_DIR)
 
 from fastapi import FastAPI
-from vesta_backend_render.database import engine, Base
+from database import engine, Base
 from vesta_backend_render.routers import users  # varsa diğer router'larını da buraya ekle
 
 # Veritabanı tablolarını oluştur
