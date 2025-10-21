@@ -1,8 +1,9 @@
-fastapi
-uvicorn[standard]
-sqlalchemy
-psycopg2-binary
-python-dotenv
-pydantic
-passlib[bcrypt]
-python-jose[cryptography]
+fastapi==0.115.0
+uvicorn==0.32.0
+SQLAlchemy==2.0.21
+psycopg2-binary==2.9.11
+python-dotenv==1.0.1
+pydantic==2.9.2
+typing-extensions==4.12.2
+starlette==0.38.6
+
