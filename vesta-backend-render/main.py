@@ -1,12 +1,13 @@
 import sys
 import os
 
-# 🔧 Render import hatasını çözmek için
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+# 🔧 Render dizin sorununu çözmek için (src/vesta-backend-render)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(BASE_DIR)
 
 from fastapi import FastAPI
-from database import engine, Base
-from routers import users  # varsa başka router'larını da buraya ekle
+from vesta_backend_render.database import engine, Base
+from vesta_backend_render.routers import users  # varsa diğer router'larını da buraya ekle
 
 # Veritabanı tablolarını oluştur
 Base.metadata.create_all(bind=engine)
