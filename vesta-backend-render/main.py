@@ -1,21 +1,25 @@
 import sys
 import os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+# 🔧 Render import hatasını çözmek için
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from fastapi import FastAPI
 from database import engine, Base
-from routers import auth, portfolio, vault, invites
+from routers import users  # varsa başka router'larını da buraya ekle
 
-# create DB tables (only for simple setup; in production use migrations)
+# Veritabanı tablolarını oluştur
 Base.metadata.create_all(bind=engine)
 
-app = FastAPI(title='VestaEstates Backend (Render)')
+app = FastAPI(
+    title="Vestra Estates API",
+    description="Backend for Vestra Estates platform",
+    version="1.0.0"
+)
 
-app.include_router(invites.router, prefix='/api/invites', tags=['invites'])
-app.include_router(auth.router, prefix='/api/auth', tags=['auth'])
-app.include_router(portfolio.router, prefix='/api/properties', tags=['properties'])
-app.include_router(vault.router, prefix='/api/vault', tags=['vault'])
+# Router'ları ekle
+app.include_router(users.router)
 
-@app.get('/')
+@app.get("/")
 def root():
-    return {'message': 'VestaEstates Backend is running'}
+    return {"message": "Vestra Backend is running 🚀"}
